@@ -22,7 +22,7 @@
 
     header {
       text-align: center;
-      padding: 40px 20px 28px;
+      padding: 120px 20px 28px;
       background: white;
       border-bottom: 1px solid #ddd;
     }
@@ -31,8 +31,7 @@
     .floating-logo {
       position: fixed;
       top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      left: calc(50% - 75px);
       width: 150px;
       z-index: 2000;
     }
@@ -41,8 +40,11 @@
 
     .floating-logo img {
       display: block;
-      width: 100%;
+      width: 150px;
       height: auto;
+      position: fixed;
+      top: 10px;
+      left: calc(50% - 75px);
     }
 
     h1 {
