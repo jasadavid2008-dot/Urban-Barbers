@@ -22,55 +22,37 @@
 
     header {
       text-align: center;
-      padding: 140px 20px 28px;
+      padding: 40px 20px 28px;
       background: white;
       border-bottom: 1px solid #ddd;
-      position: relative;
     }
 
-    /* 🔥 Animated glowing logo */
-    .logo-wrap {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+    /* fixed logo that stays in one place */
+    .floating-logo {
       position: fixed;
-      top: 10px;
+      top: 12px;
       left: 50%;
       transform: translateX(-50%);
-      width: 180px;
-      max-width: 100%;
-      margin: 0 auto 8px;
-      border-radius: 20px;
-      z-index: 1000;
-    }
-
-    .logo-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      background: radial-gradient(circle, rgba(100,140,255,0.14), transparent 70%);
-      filter: blur(10px);
-      animation: pulseGlow 3s infinite;
+      width: 160px;
+      z-index: 2000;
       pointer-events: none;
     }
 
-    .logo {
+    .floating-logo::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      background: radial-gradient(circle, rgba(100,140,255,0.14), transparent 70%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .floating-logo img {
       position: relative;
       z-index: 1;
       display: block;
       width: 100%;
-      max-width: 220px;
       height: auto;
-      animation: none;
-    }
-
-    
-      50% { transform: translateY(-6px); }
-    }
-
-    @keyframes pulseGlow {
-      0%,100% { opacity: .35; }
-      50% { opacity: .7; }
     }
 
     h1 {
@@ -177,10 +159,11 @@
 </head>
 <body>
 
+<div class="floating-logo">
+  <img src="logo.png" alt="Urban Barbers logo">
+</div>
+
 <header>
-  <div class="logo-wrap">
-    <img class="logo" src="logo.png" alt="Urban Barbers logo">
-  </div>
   <h1>URBAN BARBERS</h1>
   <p class="subtitle">Moderní barbershop</p>
   <nav>
@@ -223,10 +206,10 @@
 <section id="galerie">
   <h3>Galerie</h3>
   <div class="grid">
-    <div class="box"><img class="photo" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=1200&auto=format&fit=crop" alt="fade"></div>
-    <div class="box"><img class="photo" src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1200&auto=format&fit=crop" alt="barber"></div>
-    <div class="box"><img class="photo" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1200&auto=format&fit=crop" alt="beard"></div>
-    <div class="box"><img class="photo" src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1200&auto=format&fit=crop" alt="cut"></div>
+    <div class="box"><img class="photo" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=1200&auto=format&fit=crop" alt="men's haircut"></div>
+    <div class="box"><img class="photo" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1200&auto=format&fit=crop" alt="barber tools"></div>
+    <div class="box"><img class="photo" src="https://images.unsplash.com/photo-1512690459411-b0fd1c86b8ec?q=80&w=1200&auto=format&fit=crop" alt="beard care"></div>
+    <div class="box"><img class="photo" src="https://images.unsplash.com/photo-1503951458645-643d53d661c5?q=80&w=1200&auto=format&fit=crop" alt="barbershop interior"></div>
   </div>
 </section>
 
