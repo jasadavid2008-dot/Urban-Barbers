@@ -28,30 +28,12 @@
       position: relative;
     }
 
-    /* fixed logo that stays in one place */
-    .floating-logo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 92px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid #ddd;
-      z-index: 3000;
-      pointer-events: none;
-    }
-
-    
-
-    .floating-logo img {
+    /* logo in header (static) */
+    .logo {
       display: block;
+      margin: 0 auto 10px;
       width: 140px;
       height: auto;
-      margin: 0 auto;
     }
 
     h1 {
@@ -158,11 +140,10 @@
 </head>
 <body>
 
-<div class="floating-logo">
-  <img src="logo.png" alt="Urban Barbers logo">
-</div>
+
 
 <header>
+  <img class="logo" src="logo.png" alt="Urban Barbers logo">
   <h1>URBAN BARBERS</h1>
   <p class="subtitle">Moderní barbershop</p>
   <nav>
@@ -226,3 +207,4 @@
 
 </body>
 </html>
+
