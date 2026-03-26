@@ -30,26 +30,16 @@
     /* fixed logo that stays in one place */
     .floating-logo {
       position: fixed;
-      top: 12px;
+      top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 160px;
+      width: 150px;
       z-index: 2000;
-      pointer-events: none;
     }
 
-    .floating-logo::before {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      background: radial-gradient(circle, rgba(100,140,255,0.14), transparent 70%);
-      filter: blur(10px);
-      pointer-events: none;
-    }
+    
 
     .floating-logo img {
-      position: relative;
-      z-index: 1;
       display: block;
       width: 100%;
       height: auto;
