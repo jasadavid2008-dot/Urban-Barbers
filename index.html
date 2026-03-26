@@ -7,452 +7,206 @@
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
+    /* 🔥 Background with barber vibe */
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+      color: #111;
       background:
-        radial-gradient(circle at top left, rgba(90,120,180,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 20%),
-        linear-gradient(180deg, #050505 0%, #0b1220 45%, #0a0a0a 100%);
-      color: white;
+        linear-gradient(135deg, rgba(0,0,0,0.03) 25%, transparent 25%) -20px 0/40px 40px,
+        linear-gradient(225deg, rgba(0,0,0,0.03) 25%, transparent 25%) -20px 0/40px 40px,
+        linear-gradient(315deg, rgba(0,0,0,0.03) 25%, transparent 25%) 0px 0/40px 40px,
+        linear-gradient(45deg, rgba(0,0,0,0.03) 25%, #f4f6fb 25%) 0px 0/40px 40px;
     }
+
     header {
       text-align: center;
       padding: 48px 20px 34px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: white;
+      border-bottom: 1px solid #ddd;
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(12px);
     }
+
+    /* 🔥 Animated glowing logo */
     .logo-wrap {
       display: inline-block;
       position: relative;
     }
+
     .logo-wrap::before {
       content: "";
       position: absolute;
-      inset: -12px;
-      background: radial-gradient(circle, rgba(150,180,255,0.24), transparent 65%);
-      filter: blur(10px);
-      z-index: 0;
-      animation: pulseGlow 3.5s ease-in-out infinite;
+      inset: -15px;
+      background: radial-gradient(circle, rgba(100,140,255,0.25), transparent 70%);
+      filter: blur(12px);
+      animation: pulseGlow 3s infinite;
     }
+
     .logo {
-      position: relative;
-      z-index: 1;
-      max-width: 300px;
-      width: 100%;
-      animation: floatLogo 3s ease-in-out infinite, tiltLogo 6s ease-in-out infinite;
-      filter: drop-shadow(0 0 22px rgba(180,210,255,0.22));
+      max-width: 280px;
+      animation: float 3s ease-in-out infinite;
     }
-    @keyframes floatLogo {
-      0%, 100% { transform: translateY(0px); }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
-    @keyframes tiltLogo {
-      0%, 100% { rotate: 0deg; }
-      50% { rotate: 1deg; }
-    }
+
     @keyframes pulseGlow {
-      0%, 100% { opacity: 0.65; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.04); }
+      0%,100% { opacity: .6; }
+      50% { opacity: 1; }
     }
+
     h1 {
       letter-spacing: 6px;
       margin: 18px 0 10px;
-      font-size: 44px;
-      text-shadow: 0 0 20px rgba(255,255,255,0.18);
+      font-size: 40px;
     }
+
     .subtitle {
-      color: #d2d7e0;
-      font-size: 18px;
-      margin-bottom: 22px;
+      color: #666;
+      margin-bottom: 20px;
     }
+
     nav {
       display: flex;
       justify-content: center;
+      gap: 10px;
       flex-wrap: wrap;
-      gap: 12px;
     }
+
     nav a {
-      color: white;
-      text-decoration: none;
-      padding: 12px 18px;
-      border: 1px solid rgba(255,255,255,0.14);
+      padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      transition: 0.25s ease;
+      text-decoration: none;
+      color: #111;
+      background: #f1f1f1;
+      border: 1px solid #ddd;
+      transition: .2s;
     }
+
     nav a:hover {
-      background: rgba(255,255,255,0.12);
+      background: #e0e6ff;
       transform: translateY(-2px);
-      box-shadow: 0 0 18px rgba(120,160,255,0.18);
     }
+
     .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 54px 20px 24px;
       text-align: center;
+      padding: 60px 20px;
     }
+
     .hero-box {
-      background: linear-gradient(180deg, rgba(18,22,28,0.95), rgba(10,10,10,0.92));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 28px;
-      padding: 40px 26px;
-      box-shadow: 0 0 40px rgba(120,160,255,0.07);
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
-    .hero h2 {
-      margin: 0 0 16px;
-      font-size: 38px;
-    }
-    .hero p {
-      max-width: 760px;
-      margin: 0 auto 24px;
-      color: #d8dce3;
-      line-height: 1.7;
-      font-size: 17px;
-    }
-    .badges {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .badge {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #e8ebef;
-      font-size: 14px;
-    }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
+
     .btn {
-      display: inline-block;
-      padding: 14px 22px;
+      padding: 12px 20px;
       border-radius: 999px;
       text-decoration: none;
-      font-weight: bold;
-      transition: 0.25s ease;
+      margin: 5px;
+      display: inline-block;
     }
-    .btn-primary {
-      background: linear-gradient(90deg, #ffffff, #c7d5ff);
-      color: #050505;
-    }
-    .btn-secondary {
-      background: transparent;
-      color: white;
-      border: 1px solid rgba(255,255,255,0.18);
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 18px rgba(255,255,255,0.12);
-    }
+
+    .btn-primary { background: black; color: white; }
+    .btn-secondary { border: 1px solid #ccc; color: black; }
+
     section {
-      padding: 28px 20px 40px;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: auto;
+      padding: 40px 20px;
     }
-    h3 {
-      font-size: 30px;
-      margin-bottom: 18px;
-    }
-    .section-intro {
-      color: #cfd4dc;
-      margin-bottom: 18px;
-      line-height: 1.6;
-    }
+
+    h3 { font-size: 28px; }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 15px;
     }
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
+
     .box {
-      background: linear-gradient(180deg, rgba(18,22,28,0.95), rgba(14,14,14,0.95));
-      padding: 22px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: 0.25s ease;
-      box-shadow: 0 0 16px rgba(255,255,255,0.03);
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+      transition: .2s;
     }
+
     .box:hover {
       transform: translateY(-4px);
-      box-shadow: 0 0 24px rgba(120,160,255,0.12);
-      border-color: rgba(180,210,255,0.18);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     }
-    .box-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .box-text {
-      color: #cfd4dc;
-      line-height: 1.55;
-      font-size: 15px;
-    }
-    .price {
-      color: #d9e4ff;
-      margin-top: 10px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .price-note {
-      color: #9ca6b5;
-      font-size: 13px;
-      margin-top: 6px;
-    }
-    .gallery-card {
-      min-height: 170px;
-      display: flex;
-      align-items: end;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.45)),
-        linear-gradient(135deg, #24344f, #121212 70%);
-    }
-    .team-role {
-      color: #aab4c4;
-      margin-top: 8px;
-      font-size: 15px;
-    }
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .stars {
-      color: #dbe6ff;
-      margin-bottom: 12px;
-      letter-spacing: 2px;
-    }
-    .contact-box {
-      line-height: 1.9;
-      font-size: 17px;
-    }
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 16px;
-    }
-    .hours {
-      background: linear-gradient(180deg, rgba(199,213,255,0.08), rgba(255,255,255,0.03));
-    }
+
     footer {
       text-align: center;
-      color: #a1a7b0;
-      padding: 26px 20px 36px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      margin-top: 20px;
+      padding: 30px;
+      background: #fafafa;
+      border-top: 1px solid #ddd;
+      color: #666;
     }
-    @media (max-width: 860px) {
-      .contact-layout { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 700px) {
-      h1 { font-size: 32px; letter-spacing: 4px; }
-      .hero h2 { font-size: 29px; }
-      .subtitle { font-size: 16px; }
-      .logo { max-width: 220px; }
-    }
+
   </style>
 </head>
 <body>
 
 <header>
   <div class="logo-wrap">
-    <img class="logo" src="logo.png" alt="Urban Barbers logo" onerror="this.style.display='none'">
+    <img class="logo" src="logo.png">
   </div>
   <h1>URBAN BARBERS</h1>
-  <p class="subtitle">Moderní barbershop v Brně-Bystrci</p>
+  <p class="subtitle">Moderní barbershop</p>
   <nav>
     <a href="#sluzby">Služby</a>
     <a href="#cenik">Ceník</a>
-    <a href="#galerie">Galerie</a>
-    <a href="#tym">Tým</a>
-    <a href="#recenze">Recenze</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
 </header>
 
 <div class="hero">
   <div class="hero-box">
-    <div class="badges">
-      <span class="badge">Fade & classic cuts</span>
-      <span class="badge">Beard care</span>
-      <span class="badge">Hot towel vibe</span>
-      <span class="badge">Online rezervace</span>
-    </div>
-    <h2>Styl, který je vidět na první pohled.</h2>
-    <p>
-      Urban Barbers je místo pro muže, kteří chtějí kvalitní střih, precizní vousy a atmosféru skutečného barbershopu.
-      Kombinujeme moderní styl, čistý servis a osobní přístup, aby ses po každé návštěvě cítil fresh.
-    </p>
-    <div class="buttons">
-      <a class="btn btn-primary" href="#kontakt">Objednat se</a>
-      <a class="btn btn-secondary" href="#cenik">Zobrazit ceník</a>
-    </div>
+    <h2>Fresh look. Každý den.</h2>
+    <p>Moderní střihy, vousy a barber vibe 🔥</p>
+    <a class="btn btn-primary" href="#kontakt">Rezervace</a>
+    <a class="btn btn-secondary" href="#cenik">Ceník</a>
   </div>
 </div>
 
 <section id="sluzby">
   <h3>Služby</h3>
-  <p class="section-intro">Vyber si službu podle stylu, který chceš. Děláme čisté klasiky, moderní fade střihy i kompletní péči o vousy.</p>
   <div class="grid">
-    <div class="box">
-      <div class="box-title">Pánský střih</div>
-      <div class="box-text">Klasický nebo moderní střih podle tvaru hlavy a tvého stylu.</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Fade střih</div>
-      <div class="box-text">Precizní přechody, čisté kontury a fresh finální vzhled.</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Úprava vousů</div>
-      <div class="box-text">Tvarování, zarovnání linií a úprava délky vousů podle obličeje.</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Holení břitvou</div>
-      <div class="box-text">Tradiční hladké oholení s důrazem na detail a komfort.</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Kompletní grooming</div>
-      <div class="box-text">Vlasy, vousy a styling v jednom balíčku pro top výsledek.</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Styling & finish</div>
-      <div class="box-text">Pomáda, vosk nebo matný finish podle toho, co ti sedí nejvíc.</div>
-    </div>
+    <div class="box">Střih</div>
+    <div class="box">Fade</div>
+    <div class="box">Vousy</div>
+    <div class="box">Grooming</div>
   </div>
 </section>
 
 <section id="cenik">
   <h3>Ceník</h3>
-  <p class="section-intro">Orientační ceny služeb. Finální cena se může odvíjet od náročnosti střihu nebo rozsahu úpravy.</p>
-  <div class="price-grid">
-    <div class="box">
-      <div class="box-title">Pánský střih</div>
-      <div class="price">400 Kč</div>
-      <div class="price-note">cca 35–45 min</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Skin fade / taper fade</div>
-      <div class="price">450 Kč</div>
-      <div class="price-note">precizní přechod a kontury</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Úprava vousů</div>
-      <div class="price">300 Kč</div>
-      <div class="price-note">tvarování a zarovnání</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Holení břitvou</div>
-      <div class="price">350 Kč</div>
-      <div class="price-note">smooth finish</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Střih + vousy</div>
-      <div class="price">650 Kč</div>
-      <div class="price-note">nejčastější volba</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Kompletní grooming premium</div>
-      <div class="price">790 Kč</div>
-      <div class="price-note">vlasy, vousy, styling, detail finish</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Studentský střih</div>
-      <div class="price">330 Kč</div>
-      <div class="price-note">pro studenty do 18 let</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Strojkem dohola</div>
-      <div class="price">280 Kč</div>
-      <div class="price-note">rychlá clean úprava</div>
-    </div>
-  </div>
-</section>
-
-<section id="galerie">
-  <h3>Galerie</h3>
-  <p class="section-intro">Ukázky stylu, který v Urban Barbers najdeš. Moderní vibe, čisté detaily a fresh výsledek.</p>
   <div class="grid">
-    <div class="box gallery-card"><div class="box-title">Modern fade</div></div>
-    <div class="box gallery-card"><div class="box-title">Classic cut</div></div>
-    <div class="box gallery-card"><div class="box-title">Beard styling</div></div>
-    <div class="box gallery-card"><div class="box-title">Clean shave</div></div>
-  </div>
-</section>
-
-<section id="tym">
-  <h3>Náš tým</h3>
-  <div class="grid">
-    <div class="box">
-      <div class="box-title">David Jaša</div>
-      <div class="team-role">Zakladatel / Barber</div>
-      <div class="box-text">Specializace na moderní střihy, fade techniky a individuální přístup ke klientovi.</div>
-    </div>
-    <div class="box">
-      <div class="box-title">Martin</div>
-      <div class="team-role">Senior Barber</div>
-      <div class="box-text">Vousy, klasické střihy a precizní detail finish pro čistý výsledný look.</div>
-    </div>
-  </div>
-</section>
-
-<section id="recenze">
-  <h3>Recenze zákazníků</h3>
-  <div class="review-grid">
-    <div class="box">
-      <div class="stars">★★★★★</div>
-      <div class="box-text">Top přístup, čistý fade a super atmosféra. Přesně takhle má barbershop vypadat.</div>
-    </div>
-    <div class="box">
-      <div class="stars">★★★★★</div>
-      <div class="box-text">Vousy upravené perfektně, všechno detailně a bez spěchu. Určitě přijdu znovu.</div>
-    </div>
-    <div class="box">
-      <div class="stars">★★★★★</div>
-      <div class="box-text">Pěkný interiér, dobrý vibe a hlavně střih, co fakt sedí. Doporučuju.</div>
-    </div>
+    <div class="box">Střih – 400 Kč</div>
+    <div class="box">Fade – 450 Kč</div>
+    <div class="box">Vousy – 300 Kč</div>
+    <div class="box">Combo – 650 Kč</div>
   </div>
 </section>
 
 <section id="kontakt">
-  <h3>Kontakt & rezervace</h3>
-  <div class="contact-layout">
-    <div class="box contact-box">
-      <strong>Telefon:</strong> +420 732 584 196<br>
-      <strong>Email:</strong> info@urbanbarbers-bystrc.cz<br>
-      <strong>Instagram:</strong> @urbanbarbers<br>
-      <strong>Web:</strong> www.urbanbarbers.cz<br>
-      <strong>Adresa:</strong> nám. 28. dubna 1069/2, Brno-Bystrc<br><br>
-      <a class="btn btn-primary" href="mailto:info@urbanbarbers-bystrc.cz">Napsat email</a>
-    </div>
-    <div class="box hours">
-      <div class="box-title">Otevírací doba</div>
-      <div class="box-text">
-        Po–Pá: 9:00–19:00<br>
-        So: 10:00–14:00<br>
-        Ne: Zavřeno<br><br>
-        Objednávky doporučujeme předem přes telefon nebo Instagram zprávy.
-      </div>
-    </div>
+  <h3>Kontakt</h3>
+  <div class="box">
+    Telefon: +420 732 584 196<br>
+    Email: info@urbanbarbers.cz
   </div>
 </section>
 
 <footer>
-  © 2025 Urban Barbers. Všechna práva vyhrazena.
+  © 2025 Urban Barbers
 </footer>
 
 </body>
