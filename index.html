@@ -1,0 +1,180 @@
+import { motion } from "framer-motion";
+
+const logoDataUri = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAIAAADwf7zUAAEAAElEQVR4nOz9d5hd1XnwDd9r7X7a9KJRr0hCEhISQiA6ssHG4FDc2GNjY2MwxriJMcHHGIzJmMQkwZhAJiSAEEIIJCGh0Uvv3tvXWvv8/iiWk6W5+557fvr7POfinDv2WvvsvdZa3zn3WhFCCCGEEMIVZf1yAEIIIYQQQggXABYghBBCCCGEsAQsQAghhBBCCGApWIAQQgghhBDCEnCdDxHCC0WpVJpVVVVYWKi3t3fmzJm7d+/etGlTd3f3jh07Ojo6Nm7ceP78+Y6OjjfffLPx48evXLny8uXLly5dunjxYkpKysaNG9evX4+NjT179uzDDz9ctGjR5MmTKyoq+vr6zpw5s3LlStM0Dz300IIFC3bs2PHTTz+deeaZKVOmHDt27Pz58+Hh4enTp+fMmRMbG7tr166CgoKuXbt+/PHH9fX1f/31V2lp6Y4dO7777juHwzF9+vT8+fP79u0bGRnZvn37efPmjR8/3rFjR2NjY0VFRXh4+Pjx43fu3Pntt99+//33V1ZWvvHGGzNmzLh06dLIkSO3bNly8uTJ8PDwxx57bPny5Xv37t2/f//s2bP19fX5+fnr16/fvn17X1/fmjVrEhIScnJy4uPjV61a1dDQ0L9//wULFuTl5e3evfvw4cPjx4/ftGnT0KFDU1NTy8rKZsyYsW/fvt69e8fGxk6cOPHNN99cvHjx1q1bAwMDAwMDS0tL9+zZU1NTk5aWdvDgweHh4Q8++ODq1at37tz56aef/vDDDzdv3rxy5coFCxb4+Pj8+OOPb7755vz582NjY2fOnFm2bNnixYvvvffe9evXL168+Morr+Tn50+fPn3Hjh1jx47duXPn2LFjQ0NDFy9enDp1av/+/T/88MOuXbsGDBhQWlq6dOnS1atXr1279u2339a/f//evXtHjhy5du1aQkLC6tWrIyMjz58/f+zYsXnz5v35558+Pj579+7dv3//hg0bdDqdTqdTJ06sW7cuIyPj3Llzly5d+uCDD1599dX8/PxFixYVFBQMHTo0Nja2uLi4rq6uu7u7o6Nj9erVQUFBsbGxQ4cO7d27d8mSJZaWlmvWrFm6dOm5c+cOHjz42muvPfHEEydPnmxra2vAgAHbtm27du1aZ2dnQkJCd3d3Xl5eRUVFbW1tU1NTYmJieXl5RUVFQ0NDQkJCcnJyY8eOHTly5O23375+/Xrbtm1btmy5fPlyRUVFQ0PDmjVrQkNDq6urVq5c+f7772dlZeXn57/99ttPP/305MmTn3vuuejo6IEDB06fPn3VqlWTJ08ODg6uXLny3XffvfPOO6dPn16+fPnu3bt9+umnX3zxRUNDw7lz54aGhj777LP8/Pz58+ebm5vXrl17+PDhCxcuNDQ0mJiY9PT0FStWvP/++8uXL69fv/7xxx+PHDly8eLF586d27x585YtW9atW3f16tVjx44tXbq0bdu2srKy5ubm8vLy3bt37dmzp7S0dOnSpVFRUfPmzVu0aNG+fftWrlw5evTogQMHtm3b1tLSkp6evmTJkuPHj4eEhPj4+Ozdu/f27dsffPDB559/3tnZOTAw0NHR8eyzz44ePZqZmVlfX9+2bdudO3e2b98+e/bs8ePHN2/eHBgY2Lt378iRIydNmhQXF1dRUXH27NkZM2Z4eHiEhobevn373Llzc+bMefPNN9etW6dUKrt27XrjjTd+++23YWFhMTExX3311auvvnrx4sWff/752rVrjx49+t57761atWr58uVvvvnm2LFjzzzzzJQpU4KDg0tLS+Pi4iIjI+/evfvFF1+0tbXduXPnrFmz2tvbi4qKRowYER4evnr16ubm5sGDB5ubm44fP37t2rXHH388JCSkqKgoJSWlpqampKSkVq5cWVFRETDmv//9b01NzfDhw+Pj4x955JGioqIuXbo0NjZWV1enp6dfu3ZtzZo13t7eAwYMSE5O3rlz58cffywoKFizZs2sWbMeffTRI0eOtLW19ff3l5aWlpWVbdiwoaGhYfr06WFhYb6+vr/99tvMmTPj4+MXL168f/9+IyMj0dHRzzzzzCeffPKuu+6SUmpr64YNG2bMmDF69Ojvfe97Tz311CWXXFJXV7d8+fIXXnghLi6ura1taWmpvb29p6fn6aefnjdv3uHDh+vVq7dx48bIyMj09PTHH3+8b9++119//dKlS23btr158+b7778/ePBgRUVFaWlpa2trT09PVVVVJ06cSEhI6N+/f1lZWUFBQbNmzXr11VcDAgIuX768bNmyjRs3tre3L1u2bPz48RcvXkxISFiyZMmHH344bNiwjRs3Ll++/N577+Xk5CxbtmzGjBndu3c/88wz69evP3369G+//Xb37t3bt28vLS19+umn58+fHxAQcOTIkQcffLBBgwYpKSkHDx58//33v//++19++aWioqLExMRoNBpVVVVtbW1TU1McDgdVVVU5OTnBwcFJSUk7d+7csGHDtm3bkpKS4uLi7r///k8++SQ7O/vQoUPr16+PiYkpKio6ceJEa2vrvn37vvjiC1VVVR999FG3bt0OHDiQm5u7evXq1NRUOzs7Nzc3LS0tn3zyyYSEhGuuuWbGjBmffvrpQYMG7dixIyEhweVyHThwYM2aNQkJCTNnzmxra1u3bt2IESNOnjx5+vTpAwcOHD58uL29ffPmzevWrTv88MN79+6tq6tbv359cXFxSEhIV1fXqFGjMjIyxowZs3Tp0jVr1oSEhGzYsKE1a9YcOHBg5MiRr7766p49e3777bdnz57Nnj17x44dQ4cOzZs3T1VVddlll8XExHzwwQf9+/ffvHlzW1vbsmXLzp07N2PGjMzMzFdeeWX58uWHDx9euXJlbm7u5MmTq1evPn78+MmTJ8vLy48cOXL06NG8vLz+/ftHR0evWrVq+fLlf/31V3l5eV999dX1118vLS0tLCz8+eef8/LyQkJCjh07VlFRkZeXl5mZKZfL9fX1ZWVlEydOXLly5aeffvrss8+mT58+YcKEkSNHnjp1atmyZXFxcTt37rz33ntPPfXUpUuX5syZk5eXNxgMBgwYMGBwcPDMmTPbtm3btWvXW2+99cUXX3z00UfdunX79OlTUlLSrVu3sWPH9u3bN3369P79+z///PPEiRONGjWKiopGjx79wQcfzJo1Kzk5+Ztvvvmtt94aPnx4Y2NjSkpK8+bNq6ysfPzxx+PHj6+urs7MzLz22mvHjx+fMWNGaWnpfffdN2TIkLfffvvUqVOrV68ODw8PDg4ePHhwYWHh/Pnz4+LiCgoKtm7d2uVyBQQE/PDDD927d//www+tW7c+fPjwXXfdFRYWlpKSsmjRoo4dO1asWJGZmbl79+7BgwfXr19fV1fXunXr8vPzV69e7d69u7m5uX79+v3793/11Vc///zz9evXNzU1XXLJJYcPH27YsGHixIl79uwJDQ0tKCiIjY3dtWvXvffeu3Pnzt69e7/66qvY2Nj69esXLVq0evXqMWPG1NbWHjx4sLi4OD8/f8SIEQcPHhw+fHhJSUlQUFBvb+/u3bt7e3s7OTmZmZlffvnl8ePHv/3225qamieeeKJRo0YLFy7ctGnTzp07f/vtt1evXh0RETFy5MhTp0599NFHhw4dqq+v79GjR3p6ekVFRW1tbUlJSaWlpb/97W9tbW1NmzbduXPn2LFjb7311jVr1qSkpLS0tMTHx0+YMOGRRx4pLS19+umnZ86cWbp0aXh4+MiRI8PDw0eOHLl37155efn8+fPj4+MXLFjw6KOPLly4MDIy8sILL8ydOzc3N7ddu3aNjY0DBw4MDAz87W9/u3jxYnZ29tKlS4cPH75r167GxsYffPDBb7/99vLly+Pj46tXr16/fn1OTs633347Pj5+3bp1Dz/88PLly69fv37p0qVly5YtW7Y8//zzx44dO3r0aFxc3LZt29rb2+vVq7dz5878/PzExMSMjIyjR4/29fUNHz48Pz9/8uTJ7777bjMzs7S0NDU1tbm5uWPHjq1fv/7w4cP5+fm9evWaMWPG999/f9myZZ6env7+/gkTJgwaNGjRokVz5sxJTU3dtWvX7Nmzvvzyy8cee2zu3LkHDx7cuXOnubk5KSkpMTExzz33XGFhYVRU1IkTJxITE+fPn3/mzJmRI0dGRUWFhYV37dpVU1NTVFTUzJkzU1JSTp06NXXq1JycHF1d3YYNGxYtWpSenr5s2bKZM2dGRkYOGzYsNjb21FNPffjhh6+++mrVqlW5ubmLFi2qrq7OyclJTExcuXJlW1vb6NGjBw8evHbt2tWrV8vKyi5fvjxp0qSCgoL69euHhIS8++67v/zlL2fOnBkaGurn5wcHB0dGRs6ePTt8+PCwsLDx48dHR0dnz54dHBzc0dExatSo2NhYf39/HR0dW7duvXnz5v79+40cOfL777+3tbXFxMQUFha+//77W7du3bJly6hRo06fPt2uXbtVVVVhYWEpKSmDBg0qKyvLz89ftGjRuXPnli1b9tlnn/38889DhgzJz8/PzMx85pln7rzzzkGDBk2fPj0xMTE6Orru3btHjx7du3fvL7/8cv/+/aNHjx45cmT48OFJSUl9fX1r166tqqrq6OiIj49ftWrVvn37jh07durUqfv27fPz81evXh0eHq6oqPjyyy9Hjhy5bt26vLw8k8nU2Ni4f/9+hw4d2rFjR0NDQ1VV1TvvvPPcc8+FhYW1tbXr1q3btWvXt99+O2fOnPT09D/88MOGhobe3t4+Pj6dnZ0HDx7U19dft27dsmXLjh07NmLEiJiYmBYtWmzZsmXfvn27du26fv16UlLS9u3b9+/fHx8f/7Of/ezatSvbtm3dunUbNmy4cOFCa2vrxIkTc3Nzm5ubJ06c6Ozs7N69u3r16v3799+8efPkyZMlJSX79u1ra2vr7u6ur6+vW7duvXr1+vTpY2NjI0eOrK+vr6qqysrKSkpKxowZs3Tp0g0bNuzfv//06dP9/f1PPvlkU1PTli1bPvjgg76+vl9++WVeXl5oaOjBgwffvn17/fr1GRkZAQEBq1atSk9Pr66uTk5Orl+/PjMzs7+/f+zYsePGjXt7e+fPnz958uS2trbi4uLHH388NjY2Nze3srLy6NGj77777mHDhslkMoVCYcCAAatWrcqfPz81NXXcuHFxcXFnzpz58ssvhwwZcvjw4bfffvttt92WlJR05swZqVQ6ePDgBx54oLS0dOHChfX19fHx8bNnzx4zZkxsbGxjY+Pjjz9u37596dKlCxcuvPPOO9OnT1+8ePGAAQOaNGlSW1u7d+/eyMjI2NhYTk5OcHBwUlLSkSNHNm/eHBgYOHny5LJlyw4dOrR9+/Zdu3aFhYWdO3dOTU3t2bNnYGAgLi7u888/79+/f/ny5ffdd9/y5cvDw8MzZsxYtmxZQ0NDf39/FRUV06ZNW7x4cWlp6caNG3v27Nm4cePQ0NDCwsLk5OTdu3ffvHnT4XAIgiCEEEIIIYQQQog/4L8CRgh76UU5PAAAAABJRU5ErkJggg==";
+
+export default function UrbanBarbersWebsite() {
+  const services = [
+    { name: "Pánský střih", price: "od 350 Kč" },
+    { name: "Úprava vousů", price: "od 250 Kč" },
+    { name: "Kompletní grooming", price: "od 550 Kč" },
+    { name: "Holení hlavy", price: "od 300 Kč" },
+    { name: "Styling vlasů", price: "od 150 Kč" },
+  ];
+
+  const gallery = [
+    "Modern fade",
+    "Classic cut",
+    "Beard styling",
+    "Clean shave",
+  ];
+
+  return (
+    <div className="min-h-screen bg-zinc-950 text-white">
+      <header className="border-b border-zinc-800 bg-black/60 backdrop-blur">
+        <div className="mx-auto max-w-6xl px-6 py-6">
+          <div className="flex flex-col items-center gap-4">
+            <motion.div
+              role="img"
+              aria-label="Urban Barbers logo"
+              className="h-64 w-64 md:h-80 md:w-80 bg-contain bg-center bg-no-repeat shadow-2xl"
+              style={{ backgroundImage: `url(${logoDataUri})` }}
+              initial={{ opacity: 0, y: -20, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              whileHover={{ scale: 1.04 }}
+            />
+            <div className="text-center">
+              <h1 className="text-3xl font-bold tracking-[0.2em] md:text-5xl">URBAN BARBERS</h1>
+              <p className="mt-2 text-sm text-zinc-400 md:text-base">Moderní barbershop v Brně-Bystrci</p>
+            </div>
+          </div>
+          <nav className="mt-6 flex flex-wrap justify-center gap-6 text-sm">
+            <a href="#sluzby" className="hover:text-zinc-300">Služby</a>
+            <a href="#cenik" className="hover:text-zinc-300">Ceník</a>
+            <a href="#galerie" className="hover:text-zinc-300">Galerie</a>
+            <a href="#kontakt" className="hover:text-zinc-300">Kontakt</a>
+          </nav>
+        </div>
+      </header>
+
+      <section className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:grid-cols-2 md:py-24">
+        <div className="flex flex-col justify-center">
+          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-zinc-400">Street style • Precision • Confidence</p>
+          <h2 className="mb-5 text-4xl font-extrabold leading-tight md:text-6xl">Styl, který je vidět na první pohled.</h2>
+          <p className="mb-8 max-w-xl text-zinc-300">
+            Urban Barbers je moderní barbershop zaměřený na pánské střihy, úpravu vousů, holení hlavy a kompletní grooming.
+            Nabízíme kvalitní služby, individuální přístup a výrazný vizuální styl inspirovaný street kulturou.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="#kontakt"
+              className="rounded-2xl bg-white px-6 py-3 font-semibold text-black shadow-lg shadow-white/10 transition hover:scale-[1.02]"
+            >
+              Objednat se
+            </a>
+            <a
+              href="#sluzby"
+              className="rounded-2xl border border-zinc-700 px-6 py-3 font-semibold text-white transition hover:bg-zinc-900"
+            >
+              Zobrazit služby
+            </a>
+          </div>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6 shadow-2xl">
+            <p className="text-sm text-zinc-400">Adresa</p>
+            <p className="mt-2 text-lg font-semibold">nám. 28. dubna 1069/2</p>
+            <p className="text-zinc-300">635 00 Brno-Bystrc</p>
+          </div>
+          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6 shadow-2xl">
+            <p className="text-sm text-zinc-400">Kontakt</p>
+            <p className="mt-2 text-lg font-semibold">+420 732 584 196</p>
+            <p className="text-zinc-300">info@urbanbarbers-bystrc.cz</p>
+          </div>
+          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6 shadow-2xl md:col-span-2">
+            <p className="text-sm text-zinc-400">Otevírací doba</p>
+            <div className="mt-3 grid gap-2 text-zinc-200 sm:grid-cols-2">
+              <p>Po–Pá: 9:00–19:00</p>
+              <p>So: 10:00–14:00</p>
+              <p>Ne: Zavřeno</p>
+              <p>Objednávky i online</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sluzby" className="mx-auto max-w-6xl px-6 py-12">
+        <div className="mb-8">
+          <p className="text-sm uppercase tracking-[0.25em] text-zinc-400">Služby</p>
+          <h3 className="mt-2 text-3xl font-bold">Co nabízíme</h3>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            "Moderní a klasické střihy",
+            "Úprava vousů a kontur",
+            "Holení hlavy břitvou i strojkem",
+            "Kompletní grooming",
+            "Styling vlasů",
+            "Prodej vlasové kosmetiky",
+          ].map((item) => (
+            <div key={item} className="rounded-3xl border border-zinc-800 bg-zinc-900 p-6">
+              <p className="text-lg font-semibold">{item}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="cenik" className="mx-auto max-w-6xl px-6 py-12">
+        <div className="mb-8">
+          <p className="text-sm uppercase tracking-[0.25em] text-zinc-400">Ceník</p>
+          <h3 className="mt-2 text-3xl font-bold">Orientační ceny</h3>
+        </div>
+        <div className="overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900">
+          {services.map((service, index) => (
+            <div
+              key={service.name}
+              className={`flex items-center justify-between px-6 py-5 ${index !== services.length - 1 ? "border-b border-zinc-800" : ""}`}
+            >
+              <span className="font-medium">{service.name}</span>
+              <span className="text-zinc-300">{service.price}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="galerie" className="mx-auto max-w-6xl px-6 py-12">
+        <div className="mb-8">
+          <p className="text-sm uppercase tracking-[0.25em] text-zinc-400">Galerie</p>
+          <h3 className="mt-2 text-3xl font-bold">Ukázka stylu</h3>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {gallery.map((item) => (
+            <div
+              key={item}
+              className="flex h-44 items-end rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-800 to-black p-5 shadow-xl"
+            >
+              <p className="text-lg font-semibold">{item}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="kontakt" className="mx-auto max-w-6xl px-6 py-12 pb-20">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-8">
+            <p className="text-sm uppercase tracking-[0.25em] text-zinc-400">Kontakt</p>
+            <h3 className="mt-2 text-3xl font-bold">Rezervuj si termín</h3>
+            <div className="mt-6 space-y-3 text-zinc-300">
+              <p><span className="font-semibold text-white">Telefon:</span> +420 732 584 196</p>
+              <p><span className="font-semibold text-white">E-mail:</span> info@urbanbarbers-bystrc.cz</p>
+              <p><span className="font-semibold text-white">Web:</span> www.urbanbarbers.cz</p>
+              <p><span className="font-semibold text-white">Adresa:</span> nám. 28. dubna 1069/2, 635 00 Brno-Bystrc</p>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-zinc-800 bg-white p-8 text-black">
+            <h4 className="text-2xl font-bold">Urban Barbers</h4>
+            <p className="mt-3 text-zinc-700">
+              Moderní webová prezentace podniku slouží jako dodatek k podnikatelskému záměru a zároveň jako návrh skutečné webové stránky.
+            </p>
+            <div className="mt-6 grid gap-3">
+              <button className="rounded-2xl bg-black px-5 py-3 font-semibold text-white">Online rezervace</button>
+              <button className="rounded-2xl border border-zinc-300 px-5 py-3 font-semibold">Zobrazit ceník</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
